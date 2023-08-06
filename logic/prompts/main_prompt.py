@@ -42,7 +42,7 @@ ActionInput: 你需要将 StateChangeCal 返回的状态的change属性的值作
 Observation: StateChangeCal 输出的当前状态
 Thought: 你需要根据“女友”现在的状态，思考采用什么决策和回答什么话。
 Response: 你输出最终回复给玩家，包括“女友”的台词和“女友”的决策，不能输出别的内容。最终"Response:"后跟的内容的格式必须为: <response>
-<line>女友的台词</line>
+<line>女友的台词，注意这里只有女友说的话，我会截取line标签里的文本作为台词直接返给玩家，所以不能有其他多余的内容</line>
 <strategy>你的决策，只能是[继续对话,砍死玩家,开门]其中之一</strategy>
 </response>
 

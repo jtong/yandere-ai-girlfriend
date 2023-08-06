@@ -12,7 +12,7 @@ with gr.Blocks() as tab1:
 
     with gr.Row():
         with gr.Column(scale=1):
-            other_prompt_input = gr.Textbox(lines=3, label="其他要求", value="")
+            temperature = gr.Slider(0, 2, value=0.75, step=0.01, label="Temperature", info="Choose between 0 and 2")
             # status = gr.State(value="")
             status = gr.Label(value="继续对话")
             start = gr.Button(value="开始", variant="primary")
@@ -26,12 +26,12 @@ with gr.Blocks() as tab1:
             chat_box.submit(send,
                             [chat_box, chatbot],
                             [chat_box, chatbot], queue=False).then(
-                chat_bot, [ other_prompt_input, chatbot], [chatbot, status]
+                chat_bot, [temperature, chatbot], [chatbot, status]
             )
 
             restart.click(lambda: None, None, chatbot, queue=False)
             start.click(start_action,
                         [chat_box, chatbot],
                         [chat_box, chatbot], queue=False).then(
-                chat_bot, [ other_prompt_input, chatbot], [chatbot, status]
+                chat_bot, [temperature, chatbot], [chatbot, status]
             )

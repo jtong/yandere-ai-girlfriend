@@ -1,7 +1,6 @@
 import json
 import re
 
-from logic.llm_driver import step
 from logic.prompts.state_change_cal_prompt import state_change_cal_prompt
 
 
@@ -16,7 +15,7 @@ def build_StateChange(state):
     return StateChange
 
 
-def build_StateChangeCal(chat_history):
+def build_StateChangeCal(chat_history, step):
 
     def StateChangeCal(action_input):
         cal_prompt = state_change_cal_prompt(chat_history)

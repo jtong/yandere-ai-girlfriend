@@ -31,7 +31,7 @@ def reset_state():
     }
 
 
-def chat_bot(other_prompt, history):
+def chat_bot(temperature, history):
     # 定义一个空字符串，用来拼接每一轮对话
     chat_history_string = ''
     # 遍历 history 列表中的每一个元素
@@ -42,7 +42,7 @@ def chat_bot(other_prompt, history):
         # 将问题和回答拼接成一个字符串，并添加到结果字符串中
         chat_history_string += f"玩家: {question}\n“女友”: {answer}\n" if answer else f"玩家: {question}\n"
 
-    response: Response = reply_once(chat_history_string, state)
+    response: Response = reply_once(chat_history_string, state, temperature)
 
     if response is not None:
         post_history(history, response)
@@ -53,7 +53,7 @@ def chat_bot(other_prompt, history):
         # time.sleep(1)
         return history, response.strategy
     else:
-        return chat_bot(other_prompt, history)
+        return chat_bot(temperature, history)
 
 
 def post_history(history, parsed_response):

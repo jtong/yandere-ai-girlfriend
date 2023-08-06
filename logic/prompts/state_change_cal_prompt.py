@@ -41,7 +41,7 @@ def state_change_cal_prompt(chat_history):
 
 <observation>
 <feeling>你的感受</feeling>
-<change>以json形式表达状态的变化</change>
+<change>以json形式表达状态的变化，注意：正数前面不能写+号，格式必须是合法的json</change>
 </observation>
 ## 开始
 
